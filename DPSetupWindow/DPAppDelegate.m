@@ -40,6 +40,7 @@
 		}
 		[[self setupFlow] orderOut:self];
 	}];
+	[setupFlow setBackgroundImage:[NSImage imageNamed:@"NSUserAccounts"]];
 	[self setSetupFlow:setupFlow];
 }
 
