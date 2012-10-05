@@ -4,7 +4,7 @@ DPSetupWindow makes it easy to add setup style modal sheets or windows to your
 Objective-C and Cocoa applications on Mac OS. Simply create a set of view
 controllers and DPSetupWindow will take care of moving between them. 
 
-```
+```objective-c
 NSViewController *firstViewController = ...;
 NSViewController *secondViewController = ...;
 NSViewController *thirdViewController = ...;
