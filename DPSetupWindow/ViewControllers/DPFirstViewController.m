@@ -23,12 +23,4 @@
     return self;
 }
 
-- (BOOL)canContinue {
-	return YES;
-}
-
-- (BOOL)canGoBack {
-	return YES;
-}
-
 @end

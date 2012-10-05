@@ -176,10 +176,14 @@ typedef enum {
 	NSViewController<DPSetupWindowStageViewController> *currentViewController = [[self viewControllers] objectAtIndex:currentStage];
 	if ([currentViewController respondsToSelector:@selector(canContinue)]) {
 		[[self nextButton] setEnabled:[currentViewController canContinue]];
+	} else {
+		[[self nextButton] setEnabled:YES];
 	}
 	
 	if ([currentViewController respondsToSelector:@selector(canGoBack)]) {
 		[[self backButton] setEnabled:[currentViewController canGoBack]];
+	} else {
+		[[self backButton] setEnabled:YES];
 	}
 	
 	if (currentStage == 0) {

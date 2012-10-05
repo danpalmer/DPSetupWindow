@@ -9,14 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 @protocol DPSetupWindowStageViewController <NSObject>
+@optional
 
 /*
  Stage view controllers must implement these as they will be observed by the setup window to determine whether the interface buttons should be enabled.
  */
 @property (readonly) BOOL canContinue;
 @property (readonly) BOOL canGoBack;
-
-@optional
 
 /*
  These methods allow each stage to define their own titles for the interface buttons. For example, one may wish to have "Next, Next and Finish" as the continue button titles for three stages.

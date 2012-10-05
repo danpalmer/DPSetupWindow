@@ -23,14 +23,6 @@
     return self;
 }
 
-- (BOOL)canContinue {
-	return YES;
-}
-
-- (BOOL)canGoBack {
-	return YES;
-}
-
 - (NSString *)continueButtonTitle {
 	return @"Finish";
 }
