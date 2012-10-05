@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		379CC9BF161F416E009FEB86 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379CC9BE161F416E009FEB86 /* Cocoa.framework */; };
+		379CC9C9161F416E009FEB86 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9C7161F416E009FEB86 /* InfoPlist.strings */; };
+		379CC9CB161F416E009FEB86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9CA161F416E009FEB86 /* main.m */; };
+		379CC9CF161F416E009FEB86 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9CD161F416E009FEB86 /* Credits.rtf */; };
+		379CC9D2161F416E009FEB86 /* DPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9D1161F416E009FEB86 /* DPAppDelegate.m */; };
+		379CC9D5161F416E009FEB86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9D3161F416E009FEB86 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		379CC9BA161F416E009FEB86 /* DPSetupWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DPSetupWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		379CC9BE161F416E009FEB86 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		379CC9C1161F416E009FEB86 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		379CC9C2161F416E009FEB86 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		379CC9C3161F416E009FEB86 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		379CC9C6161F416E009FEB86 /* DPSetupWindow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DPSetupWindow-Info.plist"; sourceTree = "<group>"; };
+		379CC9C8161F416E009FEB86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		379CC9CA161F416E009FEB86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		379CC9CC161F416E009FEB86 /* DPSetupWindow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DPSetupWindow-Prefix.pch"; sourceTree = "<group>"; };
+		379CC9CE161F416E009FEB86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		379CC9D0161F416E009FEB86 /* DPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPAppDelegate.h; sourceTree = "<group>"; };
+		379CC9D1161F416E009FEB86 /* DPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPAppDelegate.m; sourceTree = "<group>"; };
+		379CC9D4161F416E009FEB86 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		379CC9B7161F416E009FEB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379CC9BF161F416E009FEB86 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		379CC9AF161F416E009FEB86 = {
+			isa = PBXGroup;
+			children = (
+				379CC9C4161F416E009FEB86 /* DPSetupWindow */,
+				379CC9BD161F416E009FEB86 /* Frameworks */,
+				379CC9BB161F416E009FEB86 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		379CC9BB161F416E009FEB86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				379CC9BA161F416E009FEB86 /* DPSetupWindow.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		379CC9BD161F416E009FEB86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				379CC9BE161F416E009FEB86 /* Cocoa.framework */,
+				379CC9C0161F416E009FEB86 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		379CC9C0161F416E009FEB86 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				379CC9C1161F416E009FEB86 /* AppKit.framework */,
+				379CC9C2161F416E009FEB86 /* CoreData.framework */,
+				379CC9C3161F416E009FEB86 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		379CC9C4161F416E009FEB86 /* DPSetupWindow */ = {
+			isa = PBXGroup;
+			children = (
+				379CC9D0161F416E009FEB86 /* DPAppDelegate.h */,
+				379CC9D1161F416E009FEB86 /* DPAppDelegate.m */,
+				379CC9D3161F416E009FEB86 /* MainMenu.xib */,
+				379CC9C5161F416E009FEB86 /* Supporting Files */,
+			);
+			path = DPSetupWindow;
+			sourceTree = "<group>";
+		};
+		379CC9C5161F416E009FEB86 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				379CC9C6161F416E009FEB86 /* DPSetupWindow-Info.plist */,
+				379CC9C7161F416E009FEB86 /* InfoPlist.strings */,
+				379CC9CA161F416E009FEB86 /* main.m */,
+				379CC9CC161F416E009FEB86 /* DPSetupWindow-Prefix.pch */,
+				379CC9CD161F416E009FEB86 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		379CC9B9161F416E009FEB86 /* DPSetupWindow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379CC9D8161F416E009FEB86 /* Build configuration list for PBXNativeTarget "DPSetupWindow" */;
+			buildPhases = (
+				379CC9B6161F416E009FEB86 /* Sources */,
+				379CC9B7161F416E009FEB86 /* Frameworks */,
+				379CC9B8161F416E009FEB86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DPSetupWindow;
+			productName = DPSetupWindow;
+			productReference = 379CC9BA161F416E009FEB86 /* DPSetupWindow.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		379CC9B1161F416E009FEB86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DP;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Dan Palmer";
+			};
+			buildConfigurationList = 379CC9B4161F416E009FEB86 /* Build configuration list for PBXProject "DPSetupWindow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 379CC9AF161F416E009FEB86;
+			productRefGroup = 379CC9BB161F416E009FEB86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				379CC9B9161F416E009FEB86 /* DPSetupWindow */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		379CC9B8161F416E009FEB86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379CC9C9161F416E009FEB86 /* InfoPlist.strings in Resources */,
+				379CC9CF161F416E009FEB86 /* Credits.rtf in Resources */,
+				379CC9D5161F416E009FEB86 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		379CC9B6161F416E009FEB86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379CC9CB161F416E009FEB86 /* main.m in Sources */,
+				379CC9D2161F416E009FEB86 /* DPAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		379CC9C7161F416E009FEB86 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				379CC9C8161F416E009FEB86 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		379CC9CD161F416E009FEB86 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				379CC9CE161F416E009FEB86 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		379CC9D3161F416E009FEB86 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				379CC9D4161F416E009FEB86 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		379CC9D6161F416E009FEB86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		379CC9D7161F416E009FEB86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		379CC9D9161F416E009FEB86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DPSetupWindow/DPSetupWindow-Prefix.pch";
+				INFOPLIST_FILE = "DPSetupWindow/DPSetupWindow-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		379CC9DA161F416E009FEB86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DPSetupWindow/DPSetupWindow-Prefix.pch";
+				INFOPLIST_FILE = "DPSetupWindow/DPSetupWindow-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		379CC9B4161F416E009FEB86 /* Build configuration list for PBXProject "DPSetupWindow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379CC9D6161F416E009FEB86 /* Debug */,
+				379CC9D7161F416E009FEB86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		379CC9D8161F416E009FEB86 /* Build configuration list for PBXNativeTarget "DPSetupWindow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379CC9D9161F416E009FEB86 /* Debug */,
+				379CC9DA161F416E009FEB86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 379CC9B1161F416E009FEB86 /* Project object */;
+}
