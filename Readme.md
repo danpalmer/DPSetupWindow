@@ -37,10 +37,10 @@ developer can control all aspects as would be normal, or as a standard window.
 ```objective-c
 // Modal sheet
 [[NSApplication sharedApplication] beginSheet:setupFlow 
-															 modalForWindow:[self window]
-																modalDelegate:nil
-															 didEndSelector:NULL
-																	contextInfo:NULL];
+                               modalForWindow:[self window]
+                                modalDelegate:nil
+                               didEndSelector:NULL
+                                  contextInfo:NULL];
 
 // Regular window
 [[self setupFlow] makeKeyAndOrderFront:self];
