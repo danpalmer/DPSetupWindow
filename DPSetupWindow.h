@@ -11,11 +11,10 @@
 @protocol DPSetupWindowStageViewController <NSObject>
 
 /*
- Stage view controllers must implement these as they will determine whether each of the buttons can be clicked.
+ Stage view controllers must implement these as they will be observed by the setup window to determine whether the interface buttons should be enabled.
  */
-- (BOOL)canContinue;
-- (BOOL)canGoBack;
-- (BOOL)canCancel;
+@property (readonly) BOOL canContinue;
+@property (readonly) BOOL canGoBack;
 
 @optional
 

@@ -14,6 +14,12 @@
 		379CC9D2161F416E009FEB86 /* DPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9D1161F416E009FEB86 /* DPAppDelegate.m */; };
 		379CC9D5161F416E009FEB86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9D3161F416E009FEB86 /* MainMenu.xib */; };
 		379CC9DE161F4F7A009FEB86 /* DPSetupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9DC161F4F7A009FEB86 /* DPSetupWindow.m */; };
+		379CC9E9161F7E62009FEB86 /* DPFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9E7161F7E62009FEB86 /* DPFirstViewController.m */; };
+		379CC9EA161F7E62009FEB86 /* DPFirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9E8161F7E62009FEB86 /* DPFirstViewController.xib */; };
+		379CC9EF161F7E7F009FEB86 /* DPSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9ED161F7E7F009FEB86 /* DPSecondViewController.m */; };
+		379CC9F0161F7E7F009FEB86 /* DPSecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9EE161F7E7F009FEB86 /* DPSecondViewController.xib */; };
+		379CC9F4161F7E8A009FEB86 /* DPThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9F2161F7E8A009FEB86 /* DPThirdViewController.m */; };
+		379CC9F5161F7E8A009FEB86 /* DPThirdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9F3161F7E8A009FEB86 /* DPThirdViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +38,15 @@
 		379CC9D4161F416E009FEB86 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		379CC9DB161F4F7A009FEB86 /* DPSetupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSetupWindow.h; sourceTree = SOURCE_ROOT; };
 		379CC9DC161F4F7A009FEB86 /* DPSetupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSetupWindow.m; sourceTree = SOURCE_ROOT; };
+		379CC9E6161F7E62009FEB86 /* DPFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPFirstViewController.h; path = ViewControllers/DPFirstViewController.h; sourceTree = "<group>"; };
+		379CC9E7161F7E62009FEB86 /* DPFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPFirstViewController.m; path = ViewControllers/DPFirstViewController.m; sourceTree = "<group>"; };
+		379CC9E8161F7E62009FEB86 /* DPFirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DPFirstViewController.xib; path = ViewControllers/DPFirstViewController.xib; sourceTree = "<group>"; };
+		379CC9EC161F7E7F009FEB86 /* DPSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPSecondViewController.h; path = ViewControllers/DPSecondViewController.h; sourceTree = "<group>"; };
+		379CC9ED161F7E7F009FEB86 /* DPSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPSecondViewController.m; path = ViewControllers/DPSecondViewController.m; sourceTree = "<group>"; };
+		379CC9EE161F7E7F009FEB86 /* DPSecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DPSecondViewController.xib; path = ViewControllers/DPSecondViewController.xib; sourceTree = "<group>"; };
+		379CC9F1161F7E8A009FEB86 /* DPThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPThirdViewController.h; path = ViewControllers/DPThirdViewController.h; sourceTree = "<group>"; };
+		379CC9F2161F7E8A009FEB86 /* DPThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPThirdViewController.m; path = ViewControllers/DPThirdViewController.m; sourceTree = "<group>"; };
+		379CC9F3161F7E8A009FEB86 /* DPThirdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DPThirdViewController.xib; path = ViewControllers/DPThirdViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +103,7 @@
 				379CC9D0161F416E009FEB86 /* DPAppDelegate.h */,
 				379CC9D1161F416E009FEB86 /* DPAppDelegate.m */,
 				379CC9E0161F4F85009FEB86 /* SetupWindow */,
+				379CC9EB161F7E69009FEB86 /* ViewControllers */,
 				379CC9D3161F416E009FEB86 /* MainMenu.xib */,
 				379CC9C5161F416E009FEB86 /* Supporting Files */,
 			);
@@ -113,6 +129,22 @@
 				379CC9DC161F4F7A009FEB86 /* DPSetupWindow.m */,
 			);
 			name = SetupWindow;
+			sourceTree = "<group>";
+		};
+		379CC9EB161F7E69009FEB86 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				379CC9E6161F7E62009FEB86 /* DPFirstViewController.h */,
+				379CC9E7161F7E62009FEB86 /* DPFirstViewController.m */,
+				379CC9E8161F7E62009FEB86 /* DPFirstViewController.xib */,
+				379CC9EC161F7E7F009FEB86 /* DPSecondViewController.h */,
+				379CC9ED161F7E7F009FEB86 /* DPSecondViewController.m */,
+				379CC9EE161F7E7F009FEB86 /* DPSecondViewController.xib */,
+				379CC9F1161F7E8A009FEB86 /* DPThirdViewController.h */,
+				379CC9F2161F7E8A009FEB86 /* DPThirdViewController.m */,
+				379CC9F3161F7E8A009FEB86 /* DPThirdViewController.xib */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +202,9 @@
 				379CC9C9161F416E009FEB86 /* InfoPlist.strings in Resources */,
 				379CC9CF161F416E009FEB86 /* Credits.rtf in Resources */,
 				379CC9D5161F416E009FEB86 /* MainMenu.xib in Resources */,
+				379CC9EA161F7E62009FEB86 /* DPFirstViewController.xib in Resources */,
+				379CC9F0161F7E7F009FEB86 /* DPSecondViewController.xib in Resources */,
+				379CC9F5161F7E8A009FEB86 /* DPThirdViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +218,9 @@
 				379CC9CB161F416E009FEB86 /* main.m in Sources */,
 				379CC9D2161F416E009FEB86 /* DPAppDelegate.m in Sources */,
 				379CC9DE161F4F7A009FEB86 /* DPSetupWindow.m in Sources */,
+				379CC9E9161F7E62009FEB86 /* DPFirstViewController.m in Sources */,
+				379CC9EF161F7E7F009FEB86 /* DPSecondViewController.m in Sources */,
+				379CC9F4161F7E8A009FEB86 /* DPThirdViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

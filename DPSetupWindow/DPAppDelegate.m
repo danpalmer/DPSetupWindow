@@ -10,6 +10,10 @@
 
 #import "DPSetupWindow.h"
 
+#import "DPFirstViewController.h"
+#import "DPSecondViewController.h"
+#import "DPThirdViewController.h"
+
 @interface DPAppDelegate ()
 
 @property (retain) DPSetupWindow *setupFlow;
@@ -19,7 +23,16 @@
 @implementation DPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-	DPSetupWindow *setupFlow = [[DPSetupWindow alloc] initWithViewControllers:@[] completionHandler:^(BOOL completed) {
+	
+	NSViewController *firstViewController = [[DPFirstViewController alloc] initWithNibName:@"DPFirstViewController" bundle:[NSBundle mainBundle]];
+	NSViewController *secondViewController = [[DPSecondViewController alloc] initWithNibName:@"DPSecondViewController" bundle:[NSBundle mainBundle]];
+	NSViewController *thirdViewController = [[DPThirdViewController alloc] initWithNibName:@"DPThirdViewController" bundle:[NSBundle mainBundle]];
+	
+	DPSetupWindow *setupFlow = [[DPSetupWindow alloc] initWithViewControllers:@[
+								firstViewController,
+								secondViewController,
+								thirdViewController
+	] completionHandler:^(BOOL completed) {
 		if (!completed) {
 			NSLog(@"Cancelled setup process");
 		} else {
