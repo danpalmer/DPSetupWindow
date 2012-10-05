@@ -52,6 +52,7 @@
 	[_cancelButton setTarget:self];
 	[_cancelButton setAction:@selector(cancel:)];
 	[_cancelButton setTitle:@"Cancel"];
+	[_cancelButton setFont:[NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSRegularControlSize]]];
 	[contentView addSubview:_cancelButton];
 	
 	_backButton = [[NSButton alloc] initWithFrame:NSMakeRect(372, 13, 97, 32)];
@@ -59,6 +60,7 @@
 	[_backButton setTarget:self];
 	[_backButton setAction:@selector(back:)];
 	[_backButton setTitle:@"Back"];
+	[_backButton setFont:[NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSRegularControlSize]]];
 	[contentView addSubview:_backButton];
 	
 	_nextButton = [[NSButton alloc] initWithFrame:NSMakeRect(469, 13, 97, 32)];
@@ -66,6 +68,7 @@
 	[_nextButton setTarget:self];
 	[_nextButton setAction:@selector(next:)];
 	[_nextButton setTitle:@"Continue"];
+	[_nextButton setFont:[NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSRegularControlSize]]];
 	[contentView addSubview:_nextButton];
 	
 	_imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(-40, 60, 320, 320)];
