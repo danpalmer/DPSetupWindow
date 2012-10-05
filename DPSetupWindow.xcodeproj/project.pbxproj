@@ -13,6 +13,7 @@
 		379CC9CF161F416E009FEB86 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9CD161F416E009FEB86 /* Credits.rtf */; };
 		379CC9D2161F416E009FEB86 /* DPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9D1161F416E009FEB86 /* DPAppDelegate.m */; };
 		379CC9D5161F416E009FEB86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 379CC9D3161F416E009FEB86 /* MainMenu.xib */; };
+		379CC9DE161F4F7A009FEB86 /* DPSetupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 379CC9DC161F4F7A009FEB86 /* DPSetupWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		379CC9D0161F416E009FEB86 /* DPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DPAppDelegate.h; sourceTree = "<group>"; };
 		379CC9D1161F416E009FEB86 /* DPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DPAppDelegate.m; sourceTree = "<group>"; };
 		379CC9D4161F416E009FEB86 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		379CC9DB161F4F7A009FEB86 /* DPSetupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSetupWindow.h; sourceTree = SOURCE_ROOT; };
+		379CC9DC161F4F7A009FEB86 /* DPSetupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSetupWindow.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 			children = (
 				379CC9D0161F416E009FEB86 /* DPAppDelegate.h */,
 				379CC9D1161F416E009FEB86 /* DPAppDelegate.m */,
+				379CC9E0161F4F85009FEB86 /* SetupWindow */,
 				379CC9D3161F416E009FEB86 /* MainMenu.xib */,
 				379CC9C5161F416E009FEB86 /* Supporting Files */,
 			);
@@ -100,6 +104,15 @@
 				379CC9CD161F416E009FEB86 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		379CC9E0161F4F85009FEB86 /* SetupWindow */ = {
+			isa = PBXGroup;
+			children = (
+				379CC9DB161F4F7A009FEB86 /* DPSetupWindow.h */,
+				379CC9DC161F4F7A009FEB86 /* DPSetupWindow.m */,
+			);
+			name = SetupWindow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +182,7 @@
 			files = (
 				379CC9CB161F416E009FEB86 /* main.m in Sources */,
 				379CC9D2161F416E009FEB86 /* DPAppDelegate.m in Sources */,
+				379CC9DE161F4F7A009FEB86 /* DPSetupWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
