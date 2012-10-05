@@ -31,4 +31,8 @@
 	return YES;
 }
 
+- (NSString *)continueButtonTitle {
+	return @"Finish";
+}
+
 @end

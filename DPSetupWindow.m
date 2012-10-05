@@ -59,7 +59,6 @@
 	[_backButton setBezelStyle:NSRoundedBezelStyle];
 	[_backButton setTarget:self];
 	[_backButton setAction:@selector(back:)];
-	[_backButton setTitle:@"Back"];
 	[_backButton setFont:[NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSRegularControlSize]]];
 	[contentView addSubview:_backButton];
 	
@@ -67,7 +66,6 @@
 	[_nextButton setBezelStyle:NSRoundedBezelStyle];
 	[_nextButton setTarget:self];
 	[_nextButton setAction:@selector(next:)];
-	[_nextButton setTitle:@"Continue"];
 	[_nextButton setFont:[NSFont systemFontOfSize:[NSFont systemFontSizeForControlSize:NSRegularControlSize]]];
 	[contentView addSubview:_nextButton];
 	
@@ -99,10 +97,23 @@
 #pragma mark -
 #pragma mark Flow Control
 
+typedef enum {
+	DPSetupWindowNextDirection = 1,
+	DPSetupWindowBackDirection = -1
+} DPSetupWindowDirection;
+
 - (void)next:(id)sender {
-	
-	if (currentStage == [[self viewControllers] count]) {
-		return; // we have already triggered the callback
+	[self shift:DPSetupWindowNextDirection];
+}
+
+- (void)back:(id)sender {
+	[self shift:DPSetupWindowBackDirection];
+}
+
+- (void)shift:(DPSetupWindowDirection)direction {
+	if ((currentStage == [[self viewControllers] count] && direction == DPSetupWindowNextDirection) ||
+		(currentStage == 0 && direction == DPSetupWindowBackDirection)) {
+		return;
 	}
 	
 	NSViewController<DPSetupWindowStageViewController> *previousViewController = nil;
@@ -110,7 +121,7 @@
 		previousViewController = [[self viewControllers] objectAtIndex:currentStage];
 	}
 	
-	currentStage++;
+	currentStage = currentStage + direction;
 	if (currentStage == [[self viewControllers] count]) {
 		[self completionHandler](YES);
 		return;
@@ -129,10 +140,10 @@
 			[[previousViewController view] removeFromSuperviewWithoutNeedingDisplay];
 		}];
 		
-		[view setFrame:NSMakeRect(400, 0, 400, 330)];
+		[view setFrame:NSMakeRect((400 * direction), 0, 400, 330)];
 		[[self contentBox] addSubview:view];
 		[[view animator] setFrameOrigin:NSMakePoint(0, 0)];
-		[[[previousViewController view] animator] setFrameOrigin:NSMakePoint(-400, 0)];
+		[[[previousViewController view] animator] setFrameOrigin:NSMakePoint((-400 * direction), 0)];
 		
 		[NSAnimationContext endGrouping];
 	} else {
@@ -145,54 +156,7 @@
 	
 	[self registerObserversForPreviousViewController:previousViewController nextViewController:nextViewController];
 	[self recalculateButtonEnabledStates];
-}
-
-- (void)back:(id)sender {
-	
-	if (currentStage == 0) {
-		return;
-	}
-	
-	NSViewController<DPSetupWindowStageViewController> *previousViewController = nil;
-	if (currentStage >= 0 && currentStage < [[self viewControllers] count]) {
-		previousViewController = [[self viewControllers] objectAtIndex:currentStage];
-	}
-	
-	currentStage--;
-	if (currentStage == [[self viewControllers] count]) {
-		[self completionHandler](YES);
-		return;
-	}
-	
-	NSViewController<DPSetupWindowStageViewController> *nextViewController = [[self viewControllers] objectAtIndex:currentStage];
-	NSView *view = [nextViewController view];
-	
-	if ([self animates] && previousViewController) {
-		[NSAnimationContext beginGrouping];
-		
-		if ([[NSApp currentEvent] modifierFlags] & NSShiftKeyMask) {
-			[[NSAnimationContext currentContext] setDuration:2.0];
-		}
-		[[NSAnimationContext currentContext] setCompletionHandler:^{
-			[[previousViewController view] removeFromSuperviewWithoutNeedingDisplay];
-		}];
-		
-		[view setFrame:NSMakeRect(-400, 0, 400, 330)];
-		[[self contentBox] addSubview:view];
-		[[view animator] setFrameOrigin:NSMakePoint(0, 0)];
-		[[[previousViewController view] animator] setFrameOrigin:NSMakePoint(400, 0)];
-		
-		[NSAnimationContext endGrouping];
-	} else {
-		[view setFrame:NSMakeRect(0, 0, 400, 330)];
-		if (previousViewController) {
-			[[previousViewController view] removeFromSuperviewWithoutNeedingDisplay];
-		}
-		[[self contentBox] addSubview:view];
-	}
-	
-	[self registerObserversForPreviousViewController:previousViewController nextViewController:nextViewController];
-	[self recalculateButtonEnabledStates];
+	[self resetButtonTitles];
 }
 
 - (void)cancelOperation:(id)sender {
@@ -229,6 +193,21 @@
 	[previousViewController removeObserver:self forKeyPath:@"canGoBack"];
 	[nextViewController addObserver:self forKeyPath:@"canContinue" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
 	[nextViewController addObserver:self forKeyPath:@"canGoBack" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
+}
+
+- (void)resetButtonTitles {
+	NSViewController<DPSetupWindowStageViewController> *currentViewController = [[self viewControllers] objectAtIndex:currentStage];
+	if ([currentViewController respondsToSelector:@selector(continueButtonTitle)]) {
+		[[self nextButton] setTitle:[currentViewController continueButtonTitle]];
+	} else {
+		[[self nextButton] setTitle:@"Continue"];
+	}
+	
+	if ([currentViewController respondsToSelector:@selector(backButtonTitle)]) {
+		[[self backButton] setTitle:[currentViewController backButtonTitle]];
+	} else {
+		[[self backButton] setTitle:@"Back"];
+	}
 }
 
 @end
