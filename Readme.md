@@ -10,7 +10,7 @@ performs its validation and allows the process to continue.
 Inspriation for this was taken from Mac OS installer applications and Mail.app's
 account configuration process.
 
-#### Usage
+### Usage
 
 `DPSetupWindow` is designed to be very easy to use. The example application
 distributed with the source code should provide enough documentation on how to
@@ -71,3 +71,27 @@ controller should contain the following.
 In order to make the setup process consistent with other similar windows, a
 fixed size of window is used, and therefore the views owned by the view 
 controllers have a fixed size of 400×330 points.
+
+### Licence
+
+(MIT Licence)
+
+Copyright (c) 2012 Dan Palmer
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
