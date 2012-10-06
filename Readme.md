@@ -53,6 +53,11 @@ application's icon.
 [setupFlow setBackgroundImage:[NSImage imageNamed:@"NSUserAccounts"]];
 ```
 
+The setup process can also be set to funnel the `representedObject` property of
+each view controller along to the next as a way of moving state between stages.
+This is not enabled by default and can be set by calling 
+`setFunnelsRepresentedObjects:` on the setup process window.
+
 Each view controller in the setup process must implement the optional
 `DPSetupWindowStageViewController` protocol.
 

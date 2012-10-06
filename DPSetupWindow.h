@@ -71,6 +71,7 @@
 @property (retain) NSImage *backgroundImage;
 @property (assign) BOOL animates;
 @property (retain) NSArray *viewControllers;
+@property (assign) BOOL funnelsRepresentedObjects;
 
 - (id)initWithViewControllers:(NSArray *)viewControllers completionHandler:(void (^)(BOOL completed))completionHandler;
 

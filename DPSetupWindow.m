@@ -35,6 +35,7 @@
 	
 	currentStage = -1;
 	_animates = YES;
+	_funnelsRepresentedObjects = NO;
 	[self setViewControllers:viewControllers];
 	[self setCompletionHandler:completionHandler];
 	[[self viewControllers] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -171,6 +172,20 @@ typedef enum {
 		[nextViewController performSelectorIfExists:@selector(willRevertToStage)];
 	}
 	
+	void (^finished)() = ^{
+		if (direction == DPSetupWindowNextDirection) {
+			[previousViewController performSelectorIfExists:@selector(didProgressToNextStage)];
+			[nextViewController performSelectorIfExists:@selector(didProgressToStage)];
+		} else if (direction == DPSetupWindowBackDirection)	{
+			[previousViewController performSelectorIfExists:@selector(didRevertToPreviousStage)];
+			[nextViewController performSelectorIfExists:@selector(didRevertToStage)];
+		}
+	};
+	
+	if ([self funnelsRepresentedObjects]) {
+		[nextViewController setRepresentedObject:[previousViewController representedObject]];
+	}
+	
 	if ([self animates] && previousViewController) {
 		[NSAnimationContext beginGrouping];
 		
@@ -179,13 +194,7 @@ typedef enum {
 		}
 		[[NSAnimationContext currentContext] setCompletionHandler:^{
 			[[previousViewController view] removeFromSuperviewWithoutNeedingDisplay];
-			if (direction == DPSetupWindowNextDirection) {
-				[previousViewController performSelectorIfExists:@selector(didProgressToNextStage)];
-				[nextViewController performSelectorIfExists:@selector(didProgressToStage)];
-			} else if (direction == DPSetupWindowBackDirection)	{
-				[previousViewController performSelectorIfExists:@selector(didRevertToPreviousStage)];
-				[nextViewController performSelectorIfExists:@selector(didRevertToStage)];
-			}
+			finished();
 		}];
 		
 		[view setFrame:NSMakeRect((400 * direction), 0, 400, 330)];
@@ -200,6 +209,7 @@ typedef enum {
 			[[previousViewController view] removeFromSuperviewWithoutNeedingDisplay];
 		}
 		[[self contentBox] addSubview:view];
+		finished();
 	}
 	
 	currentStage = nextStage;
