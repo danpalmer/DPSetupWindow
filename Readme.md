@@ -72,6 +72,19 @@ In order to make the setup process consistent with other similar windows, a
 fixed size of window is used, and therefore the views owned by the view 
 controllers have a fixed size of 400×330 points.
 
+View controllers can implement `-setSetupWindow:` either as a method or a
+synthesized property in order to access the setup window. This allows them to
+change the setup process or control it in code as it is being used. For example,
+the first view controller will add a different controller to be used in the next
+stage when `willProgressToNextStage` is called depending on whether the user
+selects 'basic' or 'advanced' setup.
+
+Being able to programmatically advance or revert the setup process may be useful
+in the case of contacting web services for authentication. An intermediate 
+'loading' controller may be used where the continue and back buttons are
+disabled, this controller can move to the appropriate stage based on a response
+from a web service.
+
 ### Licence (MIT)
 
 Copyright (c) 2012 Dan Palmer
