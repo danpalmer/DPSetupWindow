@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class DPSetupWindow;
+
 @protocol DPSetupWindowStageViewController <NSObject>
 @optional
 
@@ -16,6 +18,11 @@
  */
 @property (readonly) BOOL canContinue;
 @property (readonly) BOOL canGoBack;
+
+/*
+ Each view controller will be given a reference to the setup window through this method so that it may add extra stages for a dynamic setup process.
+ */
+- (void)setSetupWindow:(DPSetupWindow *)setupWindow;
 
 /*
  These methods allow each stage to define their own titles for the interface buttons. For example, one may wish to have "Next, Next and Finish" as the continue button titles for three stages.
@@ -63,8 +70,14 @@
 
 @property (retain) NSImage *backgroundImage;
 @property (assign) BOOL animates;
+@property (retain) NSArray *viewControllers;
 
 - (id)initWithViewControllers:(NSArray *)viewControllers completionHandler:(void (^)(BOOL completed))completionHandler;
+
+- (void)addNextViewController:(NSViewController<DPSetupWindowStageViewController> *)viewController;
+- (void)addFinalViewController:(NSViewController<DPSetupWindowStageViewController> *)viewController;
+- (void)progressToNextStage;
+- (void)revertToPreviousStage;
 
 @end
 

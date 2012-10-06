@@ -17,7 +17,6 @@
 @property (retain) NSButton *nextButton;
 
 @property (copy) void(^completionHandler)(BOOL);
-@property (retain) NSArray *viewControllers;
 @property (assign) NSViewController *currentViewController;
 
 @end
@@ -38,6 +37,11 @@
 	_animates = YES;
 	[self setViewControllers:viewControllers];
 	[self setCompletionHandler:completionHandler];
+	[[self viewControllers] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		if ([obj respondsToSelector:@selector(setSetupWindow:)]) {
+			[obj setSetupWindow:self];
+		}
+	}];
 	
 	[self setContentView:[self initialiseContentViewForRect:contentRect]];
 	[self next:nil];
@@ -82,6 +86,23 @@
 	return contentView;
 }
 
+- (void)addNextViewController:(NSViewController<DPSetupWindowStageViewController> *)viewController {
+	NSMutableArray *newViewControllers = [[self viewControllers] mutableCopy];
+	[newViewControllers insertObject:viewController atIndex:(currentStage + 1)];
+	[self setViewControllers:[NSArray arrayWithArray:newViewControllers]];
+	if ([viewController respondsToSelector:@selector(setSetupWindow:)]) {
+		[viewController setSetupWindow:self];
+	}
+}
+
+- (void)addFinalViewController:(NSViewController<DPSetupWindowStageViewController> *)viewController {
+	NSArray *newViewControllers = [[self viewControllers] arrayByAddingObject:viewController];
+	[self setViewControllers:newViewControllers];
+	if ([viewController respondsToSelector:@selector(setSetupWindow:)]) {
+		[viewController setSetupWindow:self];
+	}
+}
+
 #pragma mark -
 #pragma mark Customisation
 
@@ -102,6 +123,14 @@ typedef enum {
 	DPSetupWindowBackDirection = -1
 } DPSetupWindowDirection;
 
+- (void)progressToNextStage {
+	[self shift:DPSetupWindowNextDirection];
+}
+
+- (void)revertToPreviousStage {
+	[self shift:DPSetupWindowBackDirection];
+}
+
 - (void)next:(id)sender {
 	[self shift:DPSetupWindowNextDirection];
 }
@@ -121,20 +150,24 @@ typedef enum {
 		previousViewController = [[self viewControllers] objectAtIndex:currentStage];
 	}
 	
-	currentStage = currentStage + direction;
-	if (currentStage == [[self viewControllers] count]) {
+	if (direction == DPSetupWindowNextDirection) {
+		[previousViewController performSelectorIfExists:@selector(willProgressToNextStage)];
+	} else if (direction == DPSetupWindowBackDirection)	{
+		[previousViewController performSelectorIfExists:@selector(willRevertToPreviousStage)];
+	}
+	
+	NSInteger nextStage = currentStage + direction;
+	if (nextStage == [[self viewControllers] count]) {
 		[self completionHandler](YES);
 		return;
 	}
 	
-	NSViewController<DPSetupWindowStageViewController> *nextViewController = [[self viewControllers] objectAtIndex:currentStage];
+	NSViewController<DPSetupWindowStageViewController> *nextViewController = [[self viewControllers] objectAtIndex:nextStage];
 	NSView *view = [nextViewController view];
 	
 	if (direction == DPSetupWindowNextDirection) {
-		[previousViewController performSelectorIfExists:@selector(willProgressToNextStage)];
 		[nextViewController performSelectorIfExists:@selector(willProgressToStage)];
 	} else if (direction == DPSetupWindowBackDirection)	{
-		[previousViewController performSelectorIfExists:@selector(willRevertToPreviousStage)];
 		[nextViewController performSelectorIfExists:@selector(willRevertToStage)];
 	}
 	
@@ -169,6 +202,7 @@ typedef enum {
 		[[self contentBox] addSubview:view];
 	}
 	
+	currentStage = nextStage;
 	[self registerObserversForPreviousViewController:previousViewController nextViewController:nextViewController];
 	[self recalculateButtonEnabledStates];
 	[self resetButtonTitles];

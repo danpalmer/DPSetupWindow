@@ -8,7 +8,11 @@
 
 #import "DPSecondViewController.h"
 
+#import "DPFirstViewController.h"
+
 @interface DPSecondViewController ()
+
+@property (nonatomic, weak) DPSetupWindow *setupWindow;
 
 @end
 
@@ -24,6 +28,11 @@
     }
     
     return self;
+}
+
+- (void)willProgressToNextStage {
+	DPFirstViewController *anotherFirstViewController = [[DPFirstViewController alloc] initWithNibName:@"DPFirstViewController" bundle:[NSBundle mainBundle]];
+	[[self setupWindow] addNextViewController:anotherFirstViewController];
 }
 
 @end
