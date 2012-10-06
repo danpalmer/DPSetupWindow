@@ -72,9 +72,7 @@ In order to make the setup process consistent with other similar windows, a
 fixed size of window is used, and therefore the views owned by the view 
 controllers have a fixed size of 400×330 points.
 
-### Licence
-
-(MIT Licence)
+### Licence (MIT)
 
 Copyright (c) 2012 Dan Palmer
 
