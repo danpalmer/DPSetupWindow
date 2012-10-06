@@ -130,6 +130,14 @@ typedef enum {
 	NSViewController<DPSetupWindowStageViewController> *nextViewController = [[self viewControllers] objectAtIndex:currentStage];
 	NSView *view = [nextViewController view];
 	
+	if (direction == DPSetupWindowNextDirection) {
+		[previousViewController performSelectorIfExists:@selector(willProgressToNextStage)];
+		[nextViewController performSelectorIfExists:@selector(willProgressToStage)];
+	} else if (direction == DPSetupWindowBackDirection)	{
+		[previousViewController performSelectorIfExists:@selector(willRevertToPreviousStage)];
+		[nextViewController performSelectorIfExists:@selector(willRevertToStage)];
+	}
+	
 	if ([self animates] && previousViewController) {
 		[NSAnimationContext beginGrouping];
 		
@@ -138,6 +146,13 @@ typedef enum {
 		}
 		[[NSAnimationContext currentContext] setCompletionHandler:^{
 			[[previousViewController view] removeFromSuperviewWithoutNeedingDisplay];
+			if (direction == DPSetupWindowNextDirection) {
+				[previousViewController performSelectorIfExists:@selector(didProgressToNextStage)];
+				[nextViewController performSelectorIfExists:@selector(didProgressToStage)];
+			} else if (direction == DPSetupWindowBackDirection)	{
+				[previousViewController performSelectorIfExists:@selector(didRevertToPreviousStage)];
+				[nextViewController performSelectorIfExists:@selector(didRevertToStage)];
+			}
 		}];
 		
 		[view setFrame:NSMakeRect((400 * direction), 0, 400, 330)];

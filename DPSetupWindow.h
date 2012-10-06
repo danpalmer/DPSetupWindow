@@ -67,3 +67,21 @@
 - (id)initWithViewControllers:(NSArray *)viewControllers completionHandler:(void (^)(BOOL completed))completionHandler;
 
 @end
+
+@interface NSObject (PerformSelectorIfExists)
+- (id)performSelectorIfExists:(SEL)selector;
+@end
+@implementation NSObject (PerformSelectorIfExists)
+
+- (id)performSelectorIfExists:(SEL)selector {
+	if ([self respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+		return [self performSelector:selector];
+#pragma clang diagnostic pop
+	} else {
+		return nil;
+	}
+}
+
+@end
