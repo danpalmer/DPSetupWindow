@@ -159,7 +159,7 @@ typedef enum {
 	
 	NSInteger nextStage = currentStage + direction;
 	if (nextStage == [[self viewControllers] count]) {
-        [self deregisterObserversForViewController:previousViewController];
+        	[self deregisterObserversForViewController:previousViewController];
 		[self completionHandler](YES);
 		return;
 	}
@@ -259,10 +259,9 @@ typedef enum {
 	[nextViewController addObserver:self forKeyPath:@"canGoBack" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
 }
 
-- (void)deregisterObserversForViewController:(NSViewController *)viewController
-{
-    [viewController removeObserver:self forKeyPath:@"canContinue"];
-    [viewController removeObserver:self forKeyPath:@"canGoBack"];
+- (void)deregisterObserversForViewController:(NSViewController *)viewController {
+    	[viewController removeObserver:self forKeyPath:@"canContinue"];
+    	[viewController removeObserver:self forKeyPath:@"canGoBack"];
 }
 
 - (void)resetButtonTitles {
