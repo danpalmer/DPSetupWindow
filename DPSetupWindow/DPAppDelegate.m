@@ -45,10 +45,12 @@
 }
 
 - (IBAction)showSetupSheet:(id)sender {
+    [[self setupFlow] resetToZeroStage];
 	[[NSApplication sharedApplication] beginSheet:[self setupFlow] modalForWindow:[self window] modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
 }
 
 - (IBAction)showSetupWindow:(id)sender {
+    [[self setupFlow] resetToZeroStage];
 	[[self setupFlow] makeKeyAndOrderFront:self];
 }
 

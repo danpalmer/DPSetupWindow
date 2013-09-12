@@ -12,4 +12,6 @@
 
 @interface DPThirdViewController : NSViewController <DPSetupWindowStageViewController>
 
+@property (weak) IBOutlet NSSecureTextField *usernameTextField;
+@property (weak) IBOutlet NSSecureTextField *passwordTextField;
 @end

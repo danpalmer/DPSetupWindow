@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define kDPNotification_addNextViewController       @"kDPNotification_addNextViewController"
+#define kDPNotification_addFinalViewController      @"kDPNotification_addFinalViewController"
+
+#define kDPNotification_key_viewController          @"kDPNotification_key_viewController"
+
 @class DPSetupWindow;
 
 @protocol DPSetupWindowStageViewController <NSObject>
@@ -22,7 +27,7 @@
 /*
  Each view controller will be given a reference to the setup window through this method so that it may add extra stages for a dynamic setup process.
  */
-- (void)setSetupWindow:(DPSetupWindow *)setupWindow;
+//- (void)setSetupWindow:(DPSetupWindow *)setupWindow;
 
 /*
  These methods allow each stage to define their own titles for the interface buttons. For example, one may wish to have "Next, Next and Finish" as the continue button titles for three stages.
@@ -61,6 +66,11 @@
 - (void)willRevertToStage;
 - (void)didRevertToStage;
 
+/*
+ *clean* every field, check, radio to initial state
+ */
+- (void)resetToInitialState;
+
 @end
 
 @interface DPSetupWindow : NSWindow {
@@ -79,6 +89,7 @@
 - (void)addFinalViewController:(NSViewController<DPSetupWindowStageViewController> *)viewController;
 - (void)progressToNextStage;
 - (void)revertToPreviousStage;
+- (void)resetToZeroStage;
 
 @end
 
