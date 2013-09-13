@@ -127,6 +127,35 @@
                                                           [self setViewControllers:newViewControllers];
                                                       }
                                                   }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kDPNotification_deleteViewController
+                                                      object:nil
+                                                       queue:[NSOperationQueue currentQueue]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      
+                                                      NSDictionary *userInfo = [note userInfo];
+                                                      
+                                                      id mustDeleteController = nil;
+                                                      Class mustDeleteClass = nil;
+                                                      mustDeleteClass = [userInfo objectForKey:kDPNotification_key_viewControllerClass];
+                                                      
+                                                      NSMutableArray *viewControllers = [[self viewControllers] mutableCopy];
+                                                      for (id controller in viewControllers)
+                                                          if ([controller class]==mustDeleteClass)
+                                                              mustDeleteController = controller;
+                                                      
+                                                      if (mustDeleteController &&
+                                                          mustDeleteController != [viewControllers objectAtIndex:currentStage]) {
+                                                          
+                                                          @try {
+                                                              [self deregisterObserversForViewController:mustDeleteController];
+                                                          }
+                                                          @catch (NSException *exception) {}
+                                                          
+                                                          [viewControllers removeObject:mustDeleteController];
+                                                          [self setViewControllers:[NSArray arrayWithArray:viewControllers]];
+                                                      }
+                                                  }];
 }
 
 - (void) removeNotifications{
@@ -137,6 +166,10 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:kDPNotification_addFinalViewController
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kDPNotification_deleteViewController
                                                   object:nil];
 }
 

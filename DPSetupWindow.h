@@ -10,8 +10,10 @@
 
 #define kDPNotification_addNextViewController       @"kDPNotification_addNextViewController"
 #define kDPNotification_addFinalViewController      @"kDPNotification_addFinalViewController"
+#define kDPNotification_deleteViewController        @"kDPNotification_deleteViewController"
 
 #define kDPNotification_key_viewController          @"kDPNotification_key_viewController"
+#define kDPNotification_key_viewControllerClass     @"kDPNotification_key_viewControllerClass"
 
 @class DPSetupWindow;
 
