@@ -12,4 +12,6 @@
 
 @interface DPFirstViewController : NSViewController <DPSetupWindowStageViewController>
 
+@property(nonatomic, assign) BOOL needToAddSecondViewController;
+- (IBAction)changeAddSecondController:(id)sender;
 @end

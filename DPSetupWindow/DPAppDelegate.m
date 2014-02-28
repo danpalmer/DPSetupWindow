@@ -25,12 +25,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
 	
 	NSViewController *firstViewController = [[DPFirstViewController alloc] initWithNibName:@"DPFirstViewController" bundle:[NSBundle mainBundle]];
-	NSViewController *secondViewController = [[DPSecondViewController alloc] initWithNibName:@"DPSecondViewController" bundle:[NSBundle mainBundle]];
+	//NSViewController *secondViewController = [[DPSecondViewController alloc] initWithNibName:@"DPSecondViewController" bundle:[NSBundle mainBundle]];
 	NSViewController *thirdViewController = [[DPThirdViewController alloc] initWithNibName:@"DPThirdViewController" bundle:[NSBundle mainBundle]];
 	
 	DPSetupWindow *setupFlow = [[DPSetupWindow alloc] initWithViewControllers:@[
 								firstViewController,
-								secondViewController,
+								//secondViewController,
 								thirdViewController
 	] completionHandler:^(BOOL completed) {
 		if (!completed) {
@@ -45,10 +45,12 @@
 }
 
 - (IBAction)showSetupSheet:(id)sender {
+    [[self setupFlow] resetToZeroStage];
 	[[NSApplication sharedApplication] beginSheet:[self setupFlow] modalForWindow:[self window] modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
 }
 
 - (IBAction)showSetupWindow:(id)sender {
+    [[self setupFlow] resetToZeroStage];
 	[[self setupFlow] makeKeyAndOrderFront:self];
 }
 

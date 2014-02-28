@@ -8,23 +8,16 @@
 
 #import "DPThirdViewController.h"
 
-@interface DPThirdViewController ()
-
-@end
-
 @implementation DPThirdViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-		
-    }
-    
-    return self;
-}
 
 - (NSString *)continueButtonTitle {
 	return @"Finish";
+}
+
+- (void) resetToInitialState{
+    
+    [_usernameTextField setStringValue:@""];
+    [_passwordTextField setStringValue:@""];
 }
 
 @end
