@@ -28,18 +28,28 @@
     //NSViewController *secondViewController = [[DPSecondViewController alloc] initWithNibName:@"DPSecondViewController" bundle:[NSBundle mainBundle]];
     NSViewController *thirdViewController = [[DPThirdViewController alloc] initWithNibName:@"DPThirdViewController" bundle:[NSBundle mainBundle]];
     
+    void (^finished)(BOOL) = ^(BOOL completed){
+        if (!completed) {
+            NSLog(@"Cancelled setup process");
+            
+            [self.window endSheet:[self setupFlow] returnCode:NSModalResponseCancel];
+        } else {
+            NSLog(@"Completed setup process");
+            
+            [self.window endSheet:[self setupFlow] returnCode:NSModalResponseOK];
+        }
+        
+        [[self setupFlow]setIsVisible:NO];
+    };
+    
     DPSetupWindow *setupFlow = [[DPSetupWindow alloc] initWithViewControllers:@[
                                                                                 firstViewController,
                                                                                 //secondViewController,
                                                                                 thirdViewController
                                                                                 ] completionHandler:^(BOOL completed) {
-                                                                                    if (!completed) {
-                                                                                        NSLog(@"Cancelled setup process");
-                                                                                    } else {
-                                                                                        NSLog(@"Completed setup process");
-                                                                                    }
-                                                                                    [[self setupFlow] orderOut:self];
+                                                                                    finished(completed);
                                                                                 }];
+    
     [setupFlow setBackgroundImage:[NSImage imageNamed:@"NSUserAccounts"]];
     [self setSetupFlow:setupFlow];
 }
@@ -50,7 +60,7 @@
     [self.window beginSheet:[self setupFlow]  completionHandler:^(NSModalResponse returnCode) {
         switch (returnCode) {
             case NSModalResponseOK:
-                NSLog(@"Done button tapped in Custom Sheet");
+                NSLog(@"Finish button tapped in Custom Sheet");
                 break;
             case NSModalResponseCancel:
                 NSLog(@"Cancel button tapped in Custom Sheet");
