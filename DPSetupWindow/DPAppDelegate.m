@@ -23,35 +23,48 @@
 @implementation DPAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
-	
-	NSViewController *firstViewController = [[DPFirstViewController alloc] initWithNibName:@"DPFirstViewController" bundle:[NSBundle mainBundle]];
-	//NSViewController *secondViewController = [[DPSecondViewController alloc] initWithNibName:@"DPSecondViewController" bundle:[NSBundle mainBundle]];
-	NSViewController *thirdViewController = [[DPThirdViewController alloc] initWithNibName:@"DPThirdViewController" bundle:[NSBundle mainBundle]];
-	
-	DPSetupWindow *setupFlow = [[DPSetupWindow alloc] initWithViewControllers:@[
-								firstViewController,
-								//secondViewController,
-								thirdViewController
-	] completionHandler:^(BOOL completed) {
-		if (!completed) {
-			NSLog(@"Cancelled setup process");
-		} else {
-			NSLog(@"Completed setup process");
-		}
-		[[self setupFlow] orderOut:self];
-	}];
-	[setupFlow setBackgroundImage:[NSImage imageNamed:@"NSUserAccounts"]];
-	[self setSetupFlow:setupFlow];
+    
+    NSViewController *firstViewController = [[DPFirstViewController alloc] initWithNibName:@"DPFirstViewController" bundle:[NSBundle mainBundle]];
+    //NSViewController *secondViewController = [[DPSecondViewController alloc] initWithNibName:@"DPSecondViewController" bundle:[NSBundle mainBundle]];
+    NSViewController *thirdViewController = [[DPThirdViewController alloc] initWithNibName:@"DPThirdViewController" bundle:[NSBundle mainBundle]];
+    
+    DPSetupWindow *setupFlow = [[DPSetupWindow alloc] initWithViewControllers:@[
+                                                                                firstViewController,
+                                                                                //secondViewController,
+                                                                                thirdViewController
+                                                                                ] completionHandler:^(BOOL completed) {
+                                                                                    if (!completed) {
+                                                                                        NSLog(@"Cancelled setup process");
+                                                                                    } else {
+                                                                                        NSLog(@"Completed setup process");
+                                                                                    }
+                                                                                    [[self setupFlow] orderOut:self];
+                                                                                }];
+    [setupFlow setBackgroundImage:[NSImage imageNamed:@"NSUserAccounts"]];
+    [self setSetupFlow:setupFlow];
 }
 
 - (IBAction)showSetupSheet:(id)sender {
     [[self setupFlow] resetToZeroStage];
-	[[NSApplication sharedApplication] beginSheet:[self setupFlow] modalForWindow:[self window] modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
+    
+    [self.window beginSheet:[self setupFlow]  completionHandler:^(NSModalResponse returnCode) {
+        switch (returnCode) {
+            case NSModalResponseOK:
+                NSLog(@"Done button tapped in Custom Sheet");
+                break;
+            case NSModalResponseCancel:
+                NSLog(@"Cancel button tapped in Custom Sheet");
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 - (IBAction)showSetupWindow:(id)sender {
     [[self setupFlow] resetToZeroStage];
-	[[self setupFlow] makeKeyAndOrderFront:self];
+    [[self setupFlow] makeKeyAndOrderFront:self];
 }
 
 @end
