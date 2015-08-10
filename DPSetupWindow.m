@@ -382,6 +382,12 @@ typedef enum {
 	} else {
 		[[self nextButton] setTitle:@"Continue"];
 	}
+    
+    if ([currentViewController respondsToSelector:@selector(cancelButtonTitle)]) {
+        [[self cancelButton] setTitle:[currentViewController cancelButtonTitle]];
+    } else {
+        [[self cancelButton] setTitle:@"Cancel"];
+    }
 	
 	if ([currentViewController respondsToSelector:@selector(backButtonTitle)]) {
 		[[self backButton] setTitle:[currentViewController backButtonTitle]];
