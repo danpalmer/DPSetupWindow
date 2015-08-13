@@ -25,8 +25,11 @@
 
 - (id)initWithViewControllers:(NSArray *)viewControllers completionHandler:(void (^)(BOOL completed))completionHandler {
 	
-	NSRect contentRect = NSMakeRect(0, 0, 580, 420);
-	
+    int initial_x = [[NSScreen mainScreen] frame].size.width / 2 - 290;
+    int initial_y = [[NSScreen mainScreen] frame].size.height / 2 - 210;
+    
+    NSRect contentRect = NSMakeRect(initial_x, initial_y, 580, 420);
+    
     self = [super initWithContentRect:contentRect styleMask:(NSTitledWindowMask|NSClosableWindowMask) backing:NSBackingStoreBuffered defer:YES];
     if (self == nil) return nil;
     
