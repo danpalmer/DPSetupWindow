@@ -12,9 +12,6 @@
 
 @property (retain) NSImageView *imageView;
 @property (retain) NSBox *contentBox;
-@property (retain) NSButton *cancelButton;
-@property (retain) NSButton *backButton;
-@property (retain) NSButton *nextButton;
 
 @property (copy) void(^completionHandler)(BOOL);
 @property (assign) NSViewController *currentViewController;
