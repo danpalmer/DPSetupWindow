@@ -85,6 +85,10 @@
 @property (retain) NSArray *viewControllers;
 @property (assign) BOOL funnelsRepresentedObjects;
 
+@property (retain) NSButton *cancelButton;
+@property (retain) NSButton *backButton;
+@property (retain) NSButton *nextButton;
+
 - (id)initWithViewControllers:(NSArray *)viewControllers completionHandler:(void (^)(BOOL completed))completionHandler;
 
 - (void)addNextViewController:(NSViewController<DPSetupWindowStageViewController> *)viewController;
